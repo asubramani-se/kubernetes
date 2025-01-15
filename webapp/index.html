@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Webapp</title>
+</head>
+<body>
+    <h1>Welcome to My Webapp</h1>
+    
+    <button id="fetchButton">Get API Response</button>
+    
+    <div id="result">
+        <!-- The API response will be displayed here -->
+    </div>
+
+    <script>
+        // Fetch API functionality
+        document.getElementById('fetchButton').addEventListener('click', function() {
+            fetch('http://localhost:8081/api') // Replace with your actual API URL
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('result').innerHTML = `API Response: ${data.message}`;
+                })
+                .catch(error => {
+                    document.getElementById('result').innerHTML = 'Error fetching data';
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+</body>
+</html>
